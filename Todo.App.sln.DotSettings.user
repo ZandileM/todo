@@ -4,7 +4,7 @@
     &lt;Project Location="C:\Users\Ntombizandilem\Desktop\Personal Files\Automation Practice\todo\Todo.API.UnitTests" Presentation="&amp;lt;Todo.API.UnitTests&amp;gt;" /&gt;&#xD;
   &lt;/Not&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d9149b9b_002D66f0_002D400e_002Da9d9_002D3bd31dadf167/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from AdminTests.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d9149b9b_002D66f0_002D400e_002Da9d9_002D3bd31dadf167/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from AdminTests.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;ProjectFile&gt;A782AC97-D2DD-4B73-84B3-28E496937256/d:AdminTest/f:AdminTests.cs&lt;/ProjectFile&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
