@@ -1,0 +1,642 @@
+{
+	"info": {
+		"_postman_id": "a3afa580-13a8-4baa-b8df-a04ca02ff16f",
+		"name": "Todo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(responseCode.code == 201) {\r",
+							"tests[\"User Registered\" + responseCode.code] = responseCode.code === 201;\r",
+							"}\r",
+							"else {\r",
+							"tests[\"Email address provided is in use\"] = responseCode.code === 403;\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followAuthorizationHeader": true,
+				"removeRefererHeaderOnRedirect": true,
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"email\": \"ZandileMemka182@test.com\",\n    \"password\": \"Zandi123\"\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"pm.collectionVariables.set('auth-token', response.token);",
+							"",
+							"//Start Schema",
+							"",
+							"var schema = {",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",",
+							"    \"$id\": \"http://example.com/example.json\",",
+							"    \"type\": \"object\",",
+							"    \"title\": \"The root schema\",",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",",
+							"    \"default\": {},",
+							"    \"examples\": [",
+							"        {",
+							"            \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwibmFtZWlkIjoiMSIsImp0aSI6ImMyNmQyMGQxLWQxZTYtNGNjOS1hMTg5LTVkZmQ5OTM5ZTZiZiIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTYzNDUwNTIyMH0.qHFJPFrdpYkncZQWbAmrWg5Jpn2LaYnsBXSm7r8A9bQ\",",
+							"            \"expires\": \"2021-10-17T21:13:40Z\"",
+							"        }",
+							"    ],",
+							"    \"required\": [",
+							"        \"token\",",
+							"        \"expires\"",
+							"    ],",
+							"    \"properties\": {",
+							"        \"token\": {",
+							"            \"$id\": \"#/properties/token\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The token schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwibmFtZWlkIjoiMSIsImp0aSI6ImMyNmQyMGQxLWQxZTYtNGNjOS1hMTg5LTVkZmQ5OTM5ZTZiZiIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTYzNDUwNTIyMH0.qHFJPFrdpYkncZQWbAmrWg5Jpn2LaYnsBXSm7r8A9bQ\"",
+							"            ]",
+							"        },",
+							"        \"expires\": {",
+							"            \"$id\": \"#/properties/expires\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The expires schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"2021-10-17T21:13:40Z\"",
+							"            ]",
+							"        }",
+							"    },",
+							"    \"additionalProperties\": true",
+							"}",
+							"",
+							"pm.test ('Schema Validation', function(){",
+							"    var responseData = pm.response.json();",
+							"    var result = tv4.validate(responseData,schema, false, true) ;",
+							"    if (result!==true){",
+							"        console.log('Schema validation Fails', tv4.error);",
+							"    }",
+							"    pm.expect(result).to.be.true;",
+							"    console.log(JSON.stringify(result));",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"admin@test.com\",\n  \"username\": \"string\",\n  \"password\": \"test123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"array\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": [],\r",
+							"    \"examples\": [\r",
+							"        [\r",
+							"            {\r",
+							"                \"id\": 1,\r",
+							"                \"email\": \"admin@test.com\",\r",
+							"                \"username\": \"admin@test.com\"\r",
+							"            },\r",
+							"            {\r",
+							"                \"id\": 2,\r",
+							"                \"email\": \"test4@test.com\",\r",
+							"                \"username\": \"test4@test.com\"\r",
+							"            }\r",
+							"        ]\r",
+							"    ],\r",
+							"    \"additionalItems\": true,\r",
+							"    \"items\": {\r",
+							"        \"$id\": \"#/items\",\r",
+							"        \"anyOf\": [\r",
+							"            {\r",
+							"                \"$id\": \"#/items/anyOf/0\",\r",
+							"                \"type\": \"object\",\r",
+							"                \"title\": \"The first anyOf schema\",\r",
+							"                \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                \"default\": {},\r",
+							"                \"examples\": [\r",
+							"                    {\r",
+							"                        \"id\": 1,\r",
+							"                        \"email\": \"admin@test.com\",\r",
+							"                        \"username\": \"admin@test.com\"\r",
+							"                    }\r",
+							"                ],\r",
+							"                \"required\": [\r",
+							"                    \"id\",\r",
+							"                    \"email\",\r",
+							"                    \"username\"\r",
+							"                ],\r",
+							"                \"properties\": {\r",
+							"                    \"id\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/id\",\r",
+							"                        \"type\": \"number\",\r",
+							"                        \"title\": \"The id schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": 0,\r",
+							"                        \"examples\": [\r",
+							"                            1\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"email\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/email\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The email schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"admin@test.com\"\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"username\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/username\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The username schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"admin@test.com\"\r",
+							"                        ]\r",
+							"                    }\r",
+							"                },\r",
+							"                \"additionalProperties\": true\r",
+							"            }\r",
+							"        ]\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"pm.test ('Schema Validion', function(){\r",
+							"    var responseData = pm.response.json();\r",
+							"    var result = tv4.validate(responseData,schema, false, true) ;\r",
+							"    if (result!==true){\r",
+							"        console.log('Schema validation Fails', tv4.error);\r",
+							"    }\r",
+							"    pm.expect(result).to.be.true;\r",
+							"    console.log(JSON.stringify(result));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"var data = pm.response.json();\r",
+							"pm.test('Number of users returned = ' + data.length, function () {\r",
+							"    pm.expect(data.length);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Get user by id\n\nMust be admin\nCan only retrieve yourself, i.e., the logged in use"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"Title\", \"ZandileM_toda\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"{{Title}}\",\n    \"Description\": \"Zandile to do\",\n    \"IsComplete\": \"false\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/todos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get todo by Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/todos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all todos (authorized in user)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/todos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update todo",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Test Update\",\n    \"description\": \"Test Update\",\n    \"isComplete\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/todos/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update IsComplete field",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Value\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/todos/1/IsComplete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"1",
+						"IsComplete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete todo",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/todos/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users (Admin only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(pm.variables.get('auth-token'));\r",
+							"\r",
+							"var data = pm.response.json();\r",
+							"pm.test('Number of users returned = ' + data.length, function () {\r",
+							"    pm.expect(data.length);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code OK\", function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([201, 202,200]);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth-token",
+			"value": ""
+		}
+	]
+}
