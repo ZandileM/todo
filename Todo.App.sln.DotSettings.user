@@ -1,0 +1,15 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d0723a1c_002D7885_002D4999_002D9b0b_002D51fe181757ba/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from AdminTests.cs #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Not&gt;&#xD;
+    &lt;Project Location="C:\Users\Ntombizandilem\Desktop\Personal Files\Automation Practice\todo\Todo.API.UnitTests" Presentation="&amp;lt;Todo.API.UnitTests&amp;gt;" /&gt;&#xD;
+  &lt;/Not&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d9149b9b_002D66f0_002D400e_002Da9d9_002D3bd31dadf167/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from AdminTests.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;ProjectFile&gt;A782AC97-D2DD-4B73-84B3-28E496937256/d:AdminTest/f:AdminTests.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::A782AC97-D2DD-4B73-84B3-28E496937256::.NETCoreApp,Version=v3.1::Todo.API.UnitTests.Controllers.UserControllerTests.GetById_Returns_Unauthorized_IfNotTokenSpecified&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::A782AC97-D2DD-4B73-84B3-28E496937256::.NETCoreApp,Version=v3.1::Todo.API.UnitTests.Controllers.UserControllerTests.GetUsers_Returns_200OK_And_ListOfUsers&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

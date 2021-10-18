@@ -13,6 +13,7 @@ using Todo.API.Data.Entities;
 
 namespace Todo.API.UnitTests
 {
+
   public class TodoTestBase: IDisposable
   {
     private readonly string connectionString = "Filename=:memory:";
@@ -86,5 +87,7 @@ namespace Todo.API.UnitTests
         .UseSqlite(_connection)
         .Options;
     }
+
+
   }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
@@ -116,7 +117,7 @@ namespace Todo.API.UnitTests.Controllers
       Assert.Equal(users.Count, expected);
       Assert.Equal(users.OfType<UserDto>().Count(), expected);
     }
-
+    
     #endregion
   }
 }
